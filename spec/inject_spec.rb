@@ -25,21 +25,6 @@ end
 
 CreateSchema.suppress_messages { CreateSchema.migrate(:up) }
 
-class RepeatingEnumerator
-  include Enumerable
-
-  def initialize(count, values)
-    @count = count
-    @values = values
-  end
-
-  def each(&block)
-    @count.times do
-      @values.each(&block)
-    end
-  end
-end
-
 describe 'inject exercise' do
   context '#all_equal?' do
     it 'returns true if all elements are equal to the argument' do
