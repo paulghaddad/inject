@@ -1,6 +1,6 @@
-source 'https://rubygems.org'
+source "https://rubygems.org"
 
-gem 'rspec'
-gem 'activerecord'
-gem 'sqlite3'
-gem 'rake'
+gem "rspec"
+gem "activerecord"
+gem "sqlite3"
+gem "rake"
