@@ -28,13 +28,15 @@ CreateSchema.suppress_messages { CreateSchema.migrate(:up) }
 describe 'inject exercise' do
   context '#all_equal?' do
     it 'returns true if all elements are equal to the argument' do
-      expect(all_equal?(1, [1, 1, 1])).to be_true
+      expect(all_equal?(1, [1, 1, 1])).to be_truthy
     end
 
     it 'returns false if any element is unequal to the argument' do
-      expect(all_equal?(1, [2, 1, 1])).to be_false
-      expect(all_equal?(1, [1, 2, 1])).to be_false
-      expect(all_equal?(1, [1, 1, 2])).to be_false
+      puts all_equal?(1, [2,1,1])
+
+      expect(all_equal?(1, [2, 1, 1])).to be_falsey
+      expect(all_equal?(1, [1, 2, 1])).to be_falsey
+      expect(all_equal?(1, [1, 1, 2])).to be_falsey
     end
   end
 
@@ -50,13 +52,11 @@ describe 'inject exercise' do
 
   context '#nested_key' do
     it 'finds the nested key when present' do
-      pending
       data = { outer: { inner: 'value' } }
       expect(nested_key([:outer, :inner], data)).to eq('value')
     end
 
     it 'returns nil when missing a level' do
-      pending
       data = { other: 'value' }
       expect(nested_key([:outer, :inner], data)).to be_nil
     end
@@ -77,14 +77,12 @@ describe 'inject exercise' do
 
   context Category, '#find_by_path' do
     it 'finds a top-level category' do
-      pending
       Category.create!(name: 'Findme')
 
       expect(Category.find_by_path('Findme').try(:name)).to eq('Findme')
     end
 
     it 'finds a nested category' do
-      pending
       root = Category.create!(name: 'Root')
       child = Category.create!(name: 'Child', parent: root)
       Category.create!(name: 'Grandchild', body: 'Orphan')
